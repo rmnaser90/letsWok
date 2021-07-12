@@ -4,12 +4,12 @@ const Meal = inject('inputsStore', 'waiterStore', 'authenticationStore')(observe
     const { handleInput, setShowOptions } = inputsStore
 
     const selectMeal = function () {
-        handleInput('newOrderForm', 'meal', meal)
+        handleInput('newOrderForm', 'meal', {...meal})
         setShowOptions(true)
     }
     return (
-        <div onClick={selectMeal}>
-            <h4>{meal.name} - {meal.price}</h4>
+        <div onClick={selectMeal} className="mealBtn">
+            <h5>{meal.name} - {meal.price}</h5>
         </div>
     )
 }))

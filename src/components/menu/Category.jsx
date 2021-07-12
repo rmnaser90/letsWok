@@ -5,7 +5,7 @@ import { set } from 'mobx'
 
 const Category = inject('inputsStore', 'waiterStore', 'authenticationStore')(observer(({ inputsStore, waiterStore, authenticationStore, name, meals,openCategory, setOpenCategory }) => {
     return (
-        <div onClick={() => setOpenCategory(name)}>
+        <div className="categoryBtn" onClick={() => setOpenCategory(name)}>
             <h3>{name}</h3>
             {openCategory ? <div className="meals">
                 {meals.map((m,i) => <Meal meal={m} key={i}/>)}

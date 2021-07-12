@@ -1,0 +1,221 @@
+.waiterContainer {
+    display: grid;
+grid-template-columns: 1fr;
+align-items: center;
+justify-items: center;
+}
+
+.selectedClient {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.clientInfo {}
+
+.btnContainer {
+    display: grid;
+    grid-column: 1fr;
+}
+
+.findClientInput {
+    width: 90%;
+    height: 11vh;
+    font-size: 350%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6vh;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    color: green;
+}
+
+.selectedClientInfo {
+    margin-top: 0px;
+}
+
+.lastUpdated {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+#newOrderContainer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 86vh;
+    background-color: #d3d3d3;
+    display: grid;
+    grid-template-rows: 1fr 6fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.closeBtn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.closeBtn:hover {
+    font-size: 210%;
+}
+
+.itemsContainer {
+    width: 70%;
+    height: 100%;
+    background-color: #f5f3f4;
+    display: grid;
+    grid-row: 1fr;
+    align-items: center;
+    justify-items: center;
+    overflow-y: scroll;
+}
+
+.orderedMeal {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    border-bottom: 2px solid black;
+    align-items: center;
+    justify-items: center;
+}
+.selectedOptions{
+    width: 90%;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.mealName{
+    width: 100%;
+}
+
+.quantityControl {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+.quantityBtn{
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 15px;
+    font-size: 160%;
+    font-weight: bolder;
+    cursor: pointer;
+    text-align: center;
+  transition: 0.3s;
+}
+.quantityBtn:hover{
+font-size: 170%;
+}
+
+.minusBtn{
+    color: red;
+
+}
+.plusBtn{
+    color: green;
+
+}
+.quantity{
+    font-size: 180%;
+    font-weight: bolder;
+}
+
+#addMealBtn {
+    cursor: pointer;
+    width: 70%;
+    transition: 0.3s;
+    background-color: seagreen;
+    height: 50px;
+    font-size: 150%;
+    font-weight: bold;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+#addMealBtn:hover {
+    width: 80%;
+    font-size: 210%;
+}
+
+#menuContainer {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    align-items: center;
+    justify-items: center;
+    background-color: #d3d3d3;
+}
+
+.categoriesContainer {
+    align-self: flex-start;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.optionsContainer {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+    background-color: #d3d3d3;
+}
+
+.mealBtn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mealBtn:hover {
+    font-size: 110%;
+    font-weight: 900;
+}
+
+.categoryBtn {
+    cursor: pointer;
+    transition: 0.3s;
+    height: 90%;
+    width: 90%;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    align-items: center;
+    justify-items: center;
+    background-color: #f5f3f4;
+    border-radius: 10px;
+}
+
+.meals {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.categoryBtn:hover {
+    font-size: 110%;
+    font-weight: 900;
+}

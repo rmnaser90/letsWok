@@ -34,7 +34,10 @@ class InputsStore {
             handleInput: action,
             emptyForm: action,
             addMeal: action,
-            newOrder: action
+            newOrder: action,
+            deleteItem: action,
+            decrementItem: action,
+            incrementItem: action,
         })
         this.getMeals()
 
@@ -49,6 +52,7 @@ class InputsStore {
         const res = await apiManager.getMeals()
         const meals = { categories: [] }
         res.meals.forEach(meal => {
+            meal.quantity = 1
             if (meals[meal.category]) {
                 meals[meal.category].push(meal)
             } else {
@@ -65,13 +69,15 @@ class InputsStore {
         })
     }
     addMeal = () => {
+        const item = { ...this.newOrderForm.meal }
+        item.options=[...item.options]
         this.options.forEach(o => {
             if (o.selected) {
-                this.newOrderForm.meal.options.push(o)
+                item.options.push(o)
                 o.selected = false
             }
         })
-        this.newOrderForm.order.push(this.newOrderForm.meal)
+        this.newOrderForm.order.push(item)
         this.newOrderForm.meal = {}
     }
     selectOption = (index) => {
@@ -83,7 +89,7 @@ class InputsStore {
     getTotal = () => {
         let total = 0
         this.newOrderForm.order.forEach(m => {
-            total += m.price
+            total += m.price * m.quantity
             m.options.forEach(o => total += o.price)
         })
         return total
@@ -96,6 +102,18 @@ class InputsStore {
             this.newClientForm.mobile = ""
         }
         return res
+    }
+    deleteItem = (index) => {
+        this.newOrderForm.order.splice(index, 1)
+    }
+    decrementItem = (index) => {
+        if (this.newOrderForm.order[index].quantity > 1) {
+            this.newOrderForm.order[index].quantity--
+
+        }
+    }
+    incrementItem = (index) => {
+        this.newOrderForm.order[index].quantity++
     }
 
 }

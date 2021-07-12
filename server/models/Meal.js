@@ -8,7 +8,8 @@ const mealSchema = new Schema(
         description: String,
         options: Array,
         ordered: Number,
-        price: Number
+        price: Number,
+        quantity:Number
   
     }
 )

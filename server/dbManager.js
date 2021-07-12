@@ -29,7 +29,8 @@ class DbManager {
     countMeals = async function (order) {
         for (const i in order) {
             const meal = await Meal.findById(order[i]._id)
-            meal.ordered++
+            meal.ordered += order[i].quantity
+            meal.quantity = 1
             await meal.save()
         }
         return "done"
@@ -40,9 +41,9 @@ class DbManager {
         const waiter = await Waiter.findById(waiterId)
         let total = 0
         order.order.forEach(meal => {
-            total += meal.price
+            total += meal.price * meal.quantity
             meal.options.forEach(option => {
-                total += option.price
+                total += option.price * meal.quantity
             })
         });
         const orderDb = new Order(order)

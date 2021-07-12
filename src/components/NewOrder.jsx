@@ -15,7 +15,7 @@ const NewOrder = inject('inputsStore', 'waiterStore', 'authenticationStore')(obs
     const submitNewOrder = async function () {
         const res = await newOrder(client._id, user._id)
 
-        if(!res.error){
+        if (!res.error) {
             closeNewOrder()
             await getClients(user._id)
         }
@@ -23,11 +23,13 @@ const NewOrder = inject('inputsStore', 'waiterStore', 'authenticationStore')(obs
     }
     return (
         <div id="newOrderContainer">
-            <h1>New order</h1>
-            <h1 onClick={closeNewOrder}>X</h1>
-            {newOrderForm.order.map((m, i) => <OrderedMeal meal={m} key={i} index={i} />)}
+            <h1 className="title">New order</h1>
+            <h1 onClick={closeNewOrder} className="closeBtn">X</h1>
             {showMenu ? <Menu setShowMenu={setShowMenu} /> : null}
-            <div id="addMealBtn" onClick={() => setShowMenu(!showMenu)}><h2>Add Meal</h2></div>
+            <div className="itemsContainer" >
+                {newOrderForm.order.map((m, i) => <OrderedMeal meal={m} key={i} index={i} />)}
+                <div id="addMealBtn" onClick={() => setShowMenu(!showMenu)}>Add Meal</div>
+            </div>
             <h1>Total: {getTotal()}</h1>
             <button onClick={submitNewOrder}>Submit new order</button>
         </div>

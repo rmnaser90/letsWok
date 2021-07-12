@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const optionSchema = new Schema(
     {
         name:String,
-        price:Number
+        price:Number,
+        category:String
     }
 )
 

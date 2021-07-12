@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css';
+import './styles/waiter.css';
 import { useEffect } from 'react'
 import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
