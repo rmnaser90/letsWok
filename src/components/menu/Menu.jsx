@@ -4,7 +4,7 @@ import Category from './Category'
 import Option from './Option'
 
 const Menu = inject('inputsStore', 'waiterStore', 'authenticationStore')(observer(({ inputsStore, waiterStore, authenticationStore, client, setShowMenu, refNewOrder }) => {
-    const { meals, handleInput, showOptions, setShowOptions, options, addMeal, deselectAllOptions } = inputsStore
+    const { meals, handleInput, showOptions, setShowOptions, options, addMeal, deselectAllOptions, newOrderForm} = inputsStore
     const [openCategory, setOpenCategory] = useState("none")
     const closeMenu = function () {
         setShowOptions(false)
@@ -33,7 +33,7 @@ const Menu = inject('inputsStore', 'waiterStore', 'authenticationStore')(observe
             {showOptions ?
                 <div className="optionsContainer">
                     <h1 className="closeBtn" onClick={()=>setShowOptions(false)}>X</h1>
-                    {options.map((o, i) => <Option index={i} option={o} key={i} />)}
+                    {options.map((o, i) => o.category === newOrderForm.meal.category?<Option index={i} option={o} key={i} />:null)}
                     <button onClick={addNewMeal}>done</button>
                 </div> : null
             }

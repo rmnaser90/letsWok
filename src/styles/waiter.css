@@ -83,7 +83,7 @@ justify-items: center;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr;
     border-bottom: 2px solid black;
-    align-items: center;
+    align-items: flex-start;
     justify-items: center;
 }
 .selectedOptions{

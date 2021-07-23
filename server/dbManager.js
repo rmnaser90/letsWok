@@ -74,7 +74,7 @@ class DbManager {
         order.readyTime = Date.now()
         await order.save()
         await driver.save()
-        return { status: "Order sent to " + driver.name, error: true }
+        return { status: "Order sent to " + driver.name, error: false }
     }
 
     closeOrder = async function (orderId, driverId, comment) {
@@ -88,11 +88,12 @@ class DbManager {
             order.comment = comment
 
             driver.orderHistory.push(order)
-            const orderIndex = driver.openOrders.findIndex(o => o === orderId)
+            const orderIndex = driver.openOrders.findIndex(o => o == orderId)
+
             driver.openOrders.splice(orderIndex, 1)
 
             client.orderHistory.push(order)
-            const orderIndexClient = client.openOrders.findIndex(o => o === orderId)
+            const orderIndexClient = client.openOrders.findIndex(o => o == orderId)
             client.openOrders.splice(orderIndexClient, 1)
 
             if (client.openOrders.length === 0) {
@@ -184,7 +185,12 @@ class DbManager {
 
     getUser = async function (userName) {
         const waiter = await Waiter.findOne({ userName })
-        const driver = await Driver.findOne({ userName })
+        const driver = await Driver.findOne({ userName }).populate({
+            path: 'openOrders',
+            populate: {
+                path: 'client',
+            }
+        }).exec()
         const admin = await Admin.findOne({ userName })
         const kitchen = await Kitchen.findOne({ userName })
         const user = waiter || driver || admin || kitchen
@@ -193,7 +199,12 @@ class DbManager {
 
     getUserById = async function (userId) {
         const waiter = await Waiter.findById(userId)
-        const driver = await Driver.findById(userId)
+        const driver = await Driver.findById(userId).populate({
+            path: 'openOrders',
+            populate: {
+                path: 'client',
+            }
+        }).exec()
         const admin = await Admin.findById(userId)
         const kitchen = await Kitchen.findById(userId)
         const user = waiter || driver || admin || kitchen || {}
@@ -259,6 +270,24 @@ class DbManager {
         const options = await Option.find({})
         return { meals, options }
     }
+    getDrivers = async function () {
+        const drivers = await Driver.find({}).populate({
+            path: 'openOrders',
+            populate: {
+                path: 'client',
+            }
+        }).exec()
+        return drivers
+    }
+    getAdminById = async function (userId) {
+        const admin = await Admin.findById(userId)
+        if (admin) {
+            return admin
+        } else {
+            return {error:true,status:"User doesn't exist or not authorized"}
+        }
+    }
+
 
 
 

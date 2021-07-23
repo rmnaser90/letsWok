@@ -1,11 +1,13 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
+import Navigator from './Admin/Navigator'
+import NavBar from './Admin/NavBar'
 
-const Admin =inject('authenticationStore', 'inputsStore')(observer(({ authenticationStore, inputsStore }) => {
+const Admin =inject('authenticationStore', 'inputsStore','adminStore')(observer(({ authenticationStore, inputsStore,adminStore }) => {
     return (
-        <div>
-     
-            <h1>Admin page</h1>
+        <div className="adminPage">
+            <NavBar/>
+            <Navigator/>
         </div>
     )
 }))

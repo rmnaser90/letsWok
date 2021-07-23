@@ -1,6 +1,7 @@
 body{
   background-color: #d3d3d3;
   margin: 0px;
+  width: 100vw;
 }
 #root{
   width: 100vw;
@@ -16,7 +17,8 @@ body{
   height: 13vh;
 }
 .logo{
-  width: 7vw;
+  width: 13vh;
+  height: 13vh;
 }
 .userInfo{
   width: 100%;
@@ -36,4 +38,22 @@ body{
   width: 100%;
   height: 86vh;
   position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo{
+    width: 11vh;
+    height: 11vh;
+  }
+
+  .header {
+   position: fixed;
+    height: 11vh;
+    z-index: 11;
+  }
+  .userContainer{
+   top: 12vh;
+   padding-bottom: 200px;
+   bottom: 20px;
+  }
 }

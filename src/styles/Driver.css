@@ -1,0 +1,60 @@
+.driverContainer {
+    padding-top: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+    padding-bottom: 40px;
+}
+
+.DriverOrderContainer {
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.driverItemsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.deliveredBtn {
+    width: 90%;
+    height: 40px;
+    background-color: green;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    font-size: 140%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.deliveredBtn:hover {
+    width: 95%;
+}
+
+.commentContainer {
+    position: fixed;
+    top: 14vh;
+    width: 90vw;
+    left: 5vw;
+    height: 85vh;
+    background-color: #333232;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+.commentInput{
+    width: 95%;
+    height: 80%;
+    font-size: 150%;
+}

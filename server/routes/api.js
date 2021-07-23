@@ -99,7 +99,6 @@ router.post('/setOrderReady', async function (req, res) {
 router.post('/closeOrder', async function (req, res) {
     const { orderId, driverId, comment } = req.body
     const user = await dbManager.signInById(driverId)
-
     if (user.error) {
         res.send(user)
     } else {
@@ -129,6 +128,28 @@ router.post('/getKitchenOrders', async function (req, res) {
         if (user.type === "kitchen") {
             try {
                 const status = await dbManager.getKitchenOrders()
+                res.send(status)
+
+            } catch (error) {
+                res.send({ error: true, status: error })
+            }
+
+        } else {
+            res.send({ status: "User not authorized", error: false })
+        }
+    }
+
+})
+router.post('/getDrivers', async function (req, res) {
+    const { kitchenId } = req.body
+    const user = await dbManager.signInById(kitchenId)
+
+    if (user.error) {
+        res.send(user)
+    } else {
+        if (user.type === "kitchen" || user.type === "admin" ) {
+            try {
+                const status = await dbManager.getDrivers()
                 res.send(status)
 
             } catch (error) {

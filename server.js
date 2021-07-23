@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 })
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/user/', api)
 app.use('/admin/', adminApi)
@@ -32,11 +32,10 @@ const server = app.listen(PORT, function () {
 const io = socket(server)
 
 io.on('connection', function (socket) {
-    console.log("made socket connection");
-    socket.on('start', function (game) {
-        io.sockets.emit('start', game)
+    socket.on('newOrder', function () {
+        io.sockets.emit('newOrder')
     })
-    socket.on('move', function (direction) {
-        io.sockets.emit('move', direction)
+    socket.on('setOrderReady', function (driverId) {
+        io.sockets.emit('setOrderReady', driverId)
     })
 })
