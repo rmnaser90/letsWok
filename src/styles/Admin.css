@@ -37,7 +37,7 @@
 }
 
 .selectedPage {
-    height: 80%;
+    height:100%;
     border-radius: 50px;
     font-weight: 1200;
     display: grid;
@@ -46,7 +46,7 @@
     justify-items: center;
     color: #333232;
     background-color: #d3d3d3;
-    font-size: 220%;
+    font-size: 260%;
     width: 100%;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -69,7 +69,7 @@
     justify-items: center;
     width: 100%;
 }
-.userType{
+.newUserType{
     width: 95%;
     height: 80%;
     background-color: #d3d3d3;
@@ -92,10 +92,43 @@ font-size: 120%;
 border-bottom-right-radius: 0px;
 border-bottom-left-radius: 0px;
 }
-.newUserInputs{
+.newUserForm{
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
     justify-items: center;
     background-color: white;
+}
+.newUserInputs{
+    display: grid;
+    width: 90%;
+    height: 90%;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-items: center;
+}
+.inputTitle{
+    align-self: flex-end;
+}
+.newUserInput{
+    width: 100%;
+    height: 70px;
+    font-size: 150%;
+}
+.addUserBtn {
+    cursor: pointer;
+    width: 70%;
+    transition: 0.3s;
+    background-color: seagreen;
+    height: 50px;
+    font-size: 150%;
+    font-weight: bold;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.addUserBtn:hover {
+    width: 80%;
+    font-size: 210%;
 }

@@ -147,6 +147,7 @@ class DbManager {
     }
 
     addUser = async function (user) {
+        user.userName= user.userName.toLowerCase()
         const userExists = await this.getUser(user.userName)
         if (userExists) {
             return { status: "Username already exists", error: true }
@@ -227,7 +228,7 @@ class DbManager {
     }
 
     sigIn = async function (userName, password) {
-        const user = await this.getUser(userName)
+        const user = await this.getUser(userName.toLowerCase())
         if (user) {
             if (user.password === password) {
                 user.isLoggedIn = true

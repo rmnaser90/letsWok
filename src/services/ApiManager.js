@@ -2,8 +2,8 @@ const axios = require('axios')
 const io = require('socket.io-client')
 class ApiManager {
     constructor() {
-        this.PATH = "http://localhost:3007/"
-        this.socket = io.connect('http://localhost:3007')
+        this.PATH = "/"
+        this.socket = io.connect('/')
     }
 
     signInById = async (userId) => {
@@ -54,7 +54,7 @@ class ApiManager {
         return res.data
     }
     addUser = async (userId, user) => {
-        const res = await axios.post(this.PATH + 'user/addUser', { userId, user })
+        const res = await axios.post(this.PATH + 'admin/addUser', { userId, user })
         return res.data
     }
 

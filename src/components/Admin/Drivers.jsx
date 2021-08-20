@@ -1,9 +1,9 @@
 import React from 'react'
+import DriverMenu from '../kitchen/DriverMenu'
 
 const Drivers = () => {
     return (
         <div>
-            <h1>drivers</h1>
         </div>
     )
 }

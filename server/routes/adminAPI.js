@@ -7,7 +7,7 @@ router.use('/', async function (req, res, next) {
     const { userId } = req.body
     const user = await dbManager.getAdminById(userId)
     if (user.isLoggedIn && user.type == 'admin') {
-        req.body.admin = admin
+        req.body.admin = user
         next()
     } else {
         res.send({ error: true, status: "User not logged in or not authorized" })
@@ -23,7 +23,6 @@ router.post('/addUser', async function (req, res) {
     const resDb = await dbManager.addUser(user)
     res.send(resDb)
 })
-
 
 
 module.exports = router

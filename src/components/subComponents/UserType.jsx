@@ -5,7 +5,7 @@ const UserType = inject('authenticationStore', 'inputsStore', 'adminStore')(obse
     const { newUser, handleInput } = adminStore
 
     const classGenerator = function () {
-        return type === newUser.type ? "userType selectedType" : "userType"
+        return type === newUser.type ? "newUserType selectedType" : "newUserType"
     }
     const selectType = function () {
         handleInput('newUser', 'type', type)
