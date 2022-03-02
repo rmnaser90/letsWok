@@ -25,7 +25,7 @@ app.use('/user/', api)
 app.use('/admin/', adminApi)
 
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3007
 const server = app.listen(PORT, function () {
     console.log ("up and running on port: "+PORT)
 })
